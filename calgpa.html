@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.13.0/css/all.css" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Cabin&display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Sarabun&display=swap">
+    <link rel="stylesheet" type="text/css" href="./css/main.css">
+    <link rel="stylesheet" type="text/css" href="./css/calgpa.css">
+    <title>My GPA Calculator</title>
+</head>
+<body>
+    <div id="float-nav">
+        <i class="fas fa-arrow-circle-left"></i>
+        <span>Back to Home Page</span>
+    </div>
+    <header>
+        <li class="head-text">My GPA Calculator</li>
+    </header>
+    <main>
+        <div class="content-box">
+            <div id="upper-tab">
+                <aside id="semester-tab" class="tab-container">
+                    <!-- tab appended by js -->
+                </aside>
+                <aside>
+                    <div id="new-semester-container">
+                        <aside>
+                            <input id="new-semester-input" type="text" placeholder="new semester" maxlength="6">
+                        </aside>
+                        <aside class="flex-center">
+                            <i id="new-semester-btn" class="fas fa-calendar-plus"></i>
+                        </aside>
+                        <aside>
+                            <i class="fas fa-download"></i>
+                            <i class="fas fa-print"></i>
+                            <i class="fas fa-file-pdf"></i>
+                        </aside>
+                    </div>
+                </aside>
+            </div>
+            <div class="content-container">
+                <div id="list-creater-container">
+                    <aside>
+                        <input id="create-id-input" type="text" placeholder="subject id" maxlength="6">
+                    </aside>
+                    <aside>
+                        <input id="create-name-input" type="text" placeholder="subject name">
+                    </aside>
+                    <aside>
+                        <input id="create-credit-input" type="number" placeholder="cre." min="0" max="9">
+                    </aside>
+                    <aside id="create-grade-selector">
+                        <div class="f-icon sel">F</div>
+                        <div class="d-icon">D</div>
+                        <div class="dp-icon">D+</div>
+                        <div class="c-icon">C</div>
+                        <div class="cp-icon">C+</div>
+                        <div class="b-icon">B</div>
+                        <div class="bp-icon">B+</div>
+                        <div class="a-icon">A</div>
+                    </aside>
+                    <aside id="create-btn" class="flex-center">
+                        <i class="fas fa-plus"></i>
+                    </aside>
+                </div>
+                <div id="subject-list-container">
+                    <!-- append list by js -->
+                    <div id="empty-list">Empty Subject List</div>
+                </div>
+                <div id="summary-content-container">
+                    <aside class="gpax-table">
+                        <div>
+                            <aside></aside>
+                            <aside class="bold center">Current</aside>
+                            <aside class="bold center">All</aside>
+                        </div>
+                        <div>
+                            <aside class="bold">Credit</aside>
+                            <aside class="center t-a">N/A</aside>
+                            <aside class="center t-a">N/A</aside>
+                        </div>
+                        <div>
+                            <aside class="bold">GPA</aside>
+                            <aside class="center t-a">N/A</aside>
+                            <aside class="center t-a">N/A</aside>
+                        </div>
+                    </aside>
+                    <aside class="grade-count-table">
+                        <div>
+                            <aside></aside>
+                            <aside class="bold center">F</aside>
+                            <aside class="bold center">D</aside>
+                            <aside class="bold center">D+</aside>
+                            <aside class="bold center">C</aside>
+                            <aside class="bold center">C+</aside>
+                            <aside class="bold center">B</aside>
+                            <aside class="bold center">B+</aside>
+                            <aside class="bold center">A</aside>
+                        </div>
+                        <div>
+                            <aside class="bold">Current</aside>
+                            <aside class="center t-b">0</aside>
+                            <aside class="center t-b">0</aside>
+                            <aside class="center t-b">0</aside>
+                            <aside class="center t-b">0</aside>
+                            <aside class="center t-b">0</aside>
+                            <aside class="center t-b">0</aside>
+                            <aside class="center t-b">0</aside>
+                            <aside class="center t-b">0</aside>
+                        </div>
+                        <div>
+                            <aside class="bold">All</aside>
+                            <aside class="center t-b">0</aside>
+                            <aside class="center t-b">0</aside>
+                            <aside class="center t-b">0</aside>
+                            <aside class="center t-b">0</aside>
+                            <aside class="center t-b">0</aside>
+                            <aside class="center t-b">0</aside>
+                            <aside class="center t-b">0</aside>
+                            <aside class="center t-b">0</aside>
+                        </div>
+                    </aside>
+                    <aside class="custom-grade-table">
+                        <div>
+                            <aside>
+                                <input type="text" placeholder="261---" maxlength="6">
+                            </aside>
+                            <aside>
+                                <input type="text" placeholder="*/sem." maxlength="6">
+                            </aside>
+                        </div>
+                        <div>
+                            <aside class="bold">Credit</aside>
+                            <aside class="center t-c">0</aside>
+                        </div>
+                        <div>
+                            <aside class="bold">GPA</aside>
+                            <aside class="center t-c">0</aside>
+                        </div>
+                    </aside>
+                </div>
+            </div>
+        </div>
+    </main>
+    <footer>
+        <li>Created by Apisit Ritreungroj &copy; 2020. Lab for CPE207, TypeScript 4.1.2</li>
+    </footer>
+
+    <script type="module" src="./build/calgpa.js"></script>
+</body>
+</html>
