@@ -9,7 +9,7 @@ export class SemesterSheet extends VirtualDOM implements Iterable<SubjectList> {
 
     private selList: SubjectList | null = null;
 
-    public onlistdelete: (() => void) | null = null;
+    public onlistdelete: ((deletedList: SubjectList) => void) | null = null;
 
     public constructor(semester: string) {
         super();
@@ -92,7 +92,10 @@ export class SemesterSheet extends VirtualDOM implements Iterable<SubjectList> {
 
             s.el.remove();
 
-            this.onlistdelete?.();
+            // ressign number
+            this.forEach((list, i) => list.order = i + 1);
+
+            this.onlistdelete?.(s);
         }
 
         // set list order

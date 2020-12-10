@@ -146,7 +146,7 @@ main {
 .a-icon { background-color: hsl(120, 65%, 65%); }
 
 #create-grade-selector > *.sel {
-    box-shadow: 0 0 0 2px var(--selection-color), 0 0 1px 4px #C1EBF4;
+    box-shadow: 0 0 0 2px var(--selection-color), 0 0 1px 4px var(--sub-selection-color);
 }
 
 /* subject-list-container */
@@ -181,7 +181,7 @@ main {
 }
 
 .subject-list.sel {
-    background-color: #C1EBF4;
+    background-color: var(--sub-selection-color);
 }
 
 .subject-list.sel > .grade-icon-container > * {
