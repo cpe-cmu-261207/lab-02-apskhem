@@ -2,7 +2,7 @@ import { CreatePane, SummaryPane, UpperControllerPane } from "./app.panels.js";
 class CalGpaApp {
     static main(...args) {
         var _a;
-        const dummySheet = this.upperPane.createSheet("2562/1");
+        const dummySheet = this.upperPane.createSheet("1/2562");
         dummySheet.onlistdelete = () => {
             this.updateSummary();
         };
@@ -36,6 +36,32 @@ class CalGpaApp {
             list === null || list === void 0 ? void 0 : list.appendTo(this.listContainer);
             this.updateSummary();
         };
+        this.summaryPane.onquery = (value, type) => {
+            const dlist = [];
+            for (const sheet of type === "all" ? this.sheets : this.selSheet ? [this.selSheet] : []) {
+                for (const list of sheet) {
+                    if (list.subjectId.slice(0, 3) === value) {
+                        dlist.push(list);
+                    }
+                }
+            }
+            if (dlist.length) {
+                let weight = 0;
+                let sumWeight = 0;
+                for (const list of dlist) {
+                    weight += list.credit;
+                    sumWeight += list.credit * list.gradeAsNumber;
+                }
+                this.summaryPane.cellC[0].textContent = `${weight}`;
+                this.summaryPane.cellC[1].textContent = `${weight ? sumWeight / weight : 0}`;
+                this.summaryPane.popPassedRippleEffect();
+            }
+            else {
+                this.summaryPane.cellC[0].textContent = "N/A";
+                this.summaryPane.cellC[1].textContent = "N/A";
+                this.summaryPane.popErrorRippleEffect();
+            }
+        };
     }
     static setCurrentSheet(sheet) {
         this.selSheet = sheet;
@@ -64,8 +90,9 @@ class CalGpaApp {
         for (const sheet of this.sheets) {
             semesterWeight += sheet.totalCredit;
             semesterWeightSum += sheet.gpa * sheet.totalCredit;
+            const d = sheet.gradeCount;
             for (const key in semesterGradeCount) {
-                semesterGradeCount[key] += sheet.gradeCount[key];
+                semesterGradeCount[key] += d[key];
             }
         }
         this.summaryPane.cellA[0].textContent = `${this.selSheet.totalCredit}`;
@@ -89,10 +116,12 @@ class CalGpaApp {
         this.summaryPane.cellB[13].textContent = `${semesterGradeCount["B"]}`;
         this.summaryPane.cellB[14].textContent = `${semesterGradeCount["B+"]}`;
         this.summaryPane.cellB[15].textContent = `${semesterGradeCount["A"]}`;
+        this.summaryPane.tryQuery();
     }
     static clearListContainer() {
-        var _a;
-        for (const list of (_a = this.selSheet) !== null && _a !== void 0 ? _a : []) {
+        if (!this.selSheet)
+            return;
+        for (const list of this.selSheet) {
             list.el.remove();
         }
     }

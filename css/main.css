@@ -106,3 +106,14 @@ footer {
     align-items: center;
     justify-content: center;
 }
+
+.flex-align-center {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.relative-container {
+    overflow: hidden;
+    position: relative;
+}

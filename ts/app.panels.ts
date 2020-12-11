@@ -136,46 +136,87 @@ export class CreatePane {
 
 export class UpperControllerPane {
 
-    public readonly semesterInput = document.getElementById("new-semester-input") as HTMLInputElement;
-    public readonly createIcon = document.getElementById("new-semester-btn") as HTMLElement;
+    public static instance: UpperControllerPane | null = null;
 
+    public readonly createIcon = document.getElementById("new-semester-btn") as HTMLElement;
+    public readonly newSemesterIcon = [...document.getElementsByClassName("create-semester-icon")] as HTMLElement[];
     public readonly semesterTabContainer = document.getElementById("semester-tab") as HTMLElement;
+
+    private runningYear = 2562;
 
     private readonly tabs: HTMLElement[] = [];
 
     private selTab: HTMLElement | null = null;
+    private selIcon: HTMLElement | null = null;
 
     public onsheetcreate: ((sheet: SemesterSheet) => void) | null = null;
     public onsheetchange: ((semester: SemesterSheet) => void) | null = null;
 
     public constructor() {
-        this.semesterInput.addEventListener("keydown", (e) => {
-            if (e.key === "Enter") {
-                e.preventDefault();
 
-                this.semesterInput.blur();
+        // singleton
+        if (UpperControllerPane.instance) {
+            return UpperControllerPane.instance;
+        }
+        else {
+            UpperControllerPane.instance = this;
+        }
 
-                this.createIcon.click();
-            }
-        });
+        // init icons event handler
+        for (const icon of this.newSemesterIcon) {
+            icon.addEventListener("click", () => {
+                if (icon.classList.contains("disabled")) return;
+
+                this.selIcon?.classList.remove("sel");
+
+                if (this.selIcon === icon) {
+                    this.selIcon = null;
+                    this.createIcon.classList.add("disabled");
+                    return;
+                }
+
+                icon.classList.add("sel");
+                this.createIcon.classList.remove("disabled");
+
+                this.selIcon = icon;
+            });
+        }
 
         this.createIcon.addEventListener("click", this.create);
     }
 
     private create = () => {
-        if (!this.validate()) return;
-        
-        const s = this.createSheet(this.semesterInput.value);
+        if (!this.validate()) return;        
 
-        this.semesterInput.value = "";
+        if (this.selIcon?.textContent === "1") {
+            this.newSemesterIcon[0].classList.add("disabled");
+            this.newSemesterIcon[1].classList.remove("disabled");
+            this.newSemesterIcon[2].classList.add("disabled");
+            this.runningYear++;
+            
+        }
+        else if (this.selIcon?.textContent === "2") {
+            this.newSemesterIcon[0].classList.remove("disabled");
+            this.newSemesterIcon[1].classList.add("disabled");
+            this.newSemesterIcon[2].classList.remove("disabled");
+        }
+        else {
+            this.newSemesterIcon[0].classList.remove("disabled");
+            this.newSemesterIcon[1].classList.add("disabled");
+            this.newSemesterIcon[2].classList.add("disabled");
+        }
+
+        const s = this.createSheet(`${this.selIcon?.textContent ?? ""}/${this.runningYear}`);
+
+        this.selIcon?.classList.remove("sel");
+        this.createIcon.classList.add("disabled");
+        this.selIcon = null;
         
         this.onsheetcreate?.(s);
     }
 
     private validate(): boolean {
-        if (!this.semesterInput.value) return false;
-        
-        return true;
+        return !!this.selIcon && this.newSemesterIcon.filter(v => v.classList.contains("sel")).length === 1;
     }
 
     public createSheet(semester: string): SemesterSheet {
@@ -211,6 +252,13 @@ export class SummaryPane {
     public readonly cellA = [...document.getElementsByClassName("t-a")];
     public readonly cellB = [...document.getElementsByClassName("t-b")];
     public readonly cellC = [...document.getElementsByClassName("t-c")];
+    
+    public readonly typeIcons = [...document.getElementsByClassName("subject-query-icon")] as HTMLElement[];
+    public readonly subjectDigitInput = document.getElementById("subject-query-input") as HTMLInputElement;
+
+    private selTypeIcon: HTMLElement | null = null;
+
+    public onquery: ((digit: string, type: "all" | "current") => void) | null = null;
 
     public constructor() {
         
@@ -220,6 +268,55 @@ export class SummaryPane {
         }
         else {
             SummaryPane.instance = this;
+        }
+
+        // init icons event handler
+        for (const icon of this.typeIcons) {
+            icon.addEventListener("click", () => {
+                if (icon.classList.contains("disabled")) return;
+                if (this.selTypeIcon === icon) return;
+
+                this.selTypeIcon?.classList.remove("sel");
+                icon.classList.add("sel");
+
+                this.selTypeIcon = icon;
+
+                // also stimulate event
+                this.tryQuery();
+            });
+        }
+
+        // click first type icon
+        this.typeIcons[0].click();
+
+        // init subject query input
+        this.subjectDigitInput.addEventListener("input", () => {
+            if (this.subjectDigitInput.value.length !== 3) {
+                this.cellC[0].textContent = "N/A";
+                this.cellC[1].textContent = "N/A";
+
+                return;
+            }
+
+            this.onquery?.(this.subjectDigitInput.value, this.queryType);
+        });
+    }
+
+    public get queryType(): "all" | "current" {
+        return this.selTypeIcon?.textContent === "*" ? "all" : "current";
+    }
+
+    public popErrorRippleEffect(): void {
+        new RippleEffect(0, 0, this.subjectDigitInput.parentElement as HTMLElement, "error-ripple");
+    }
+
+    public popPassedRippleEffect(): void {
+        new RippleEffect(0, 0, this.subjectDigitInput.parentElement as HTMLElement, "passed-ripple")
+    }
+
+    public tryQuery(): void {
+        if (this.subjectDigitInput.value.length === 3) {
+            this.onquery?.(this.subjectDigitInput.value, this.queryType);
         }
     }
 }

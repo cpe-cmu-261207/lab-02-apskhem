@@ -66,7 +66,8 @@ export class SemesterSheet extends VirtualDOM {
             const i = this.subjectList.indexOf(s);
             this.subjectList.splice(i, 1);
             s.el.remove();
-            (_a = this.onlistdelete) === null || _a === void 0 ? void 0 : _a.call(this);
+            this.forEach((list, i) => list.order = i + 1);
+            (_a = this.onlistdelete) === null || _a === void 0 ? void 0 : _a.call(this, s);
         };
         s.order = this.subjectList.length;
         return s;

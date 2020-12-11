@@ -5,7 +5,7 @@ export class SemesterSheet extends VirtualDOM implements Iterable<SubjectList> {
 
     private readonly subjectList: SubjectList[] = [];
 
-    private readonly semester: string;
+    public readonly semester: string;
 
     private selList: SubjectList | null = null;
 

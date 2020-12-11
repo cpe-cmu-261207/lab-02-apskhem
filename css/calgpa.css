@@ -34,21 +34,32 @@ main {
 
 #upper-tab {
     display: grid;
-    grid-template-columns: 1fr 234px;
+    grid-template-columns: 1fr 214px;
+}
+
+#upper-tab > :last-child {
+    display: flex;
+    padding: 8px;
 }
 
 #new-semester-container {
+    width: 100%;
     display: grid;
-    grid-template-columns: 1fr 32px 86px;
+    grid-template-columns: 1fr 32px 1fr;
+}
+
+#new-semester-container > *:not(:first-child) {
+    border-left: 1px solid whitesmoke;
 }
 
 #new-semester-container > aside:first-child {
-    padding-right: 12px;
-    border-right: 1px solid whitesmoke;
+    padding: 0 8px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 }
 
 #new-semester-container > aside:last-child {
-    border-left: 1px solid whitesmoke;
     padding: 0 8px;
     display: flex;
     align-items: center;
@@ -63,6 +74,28 @@ main {
 
 #new-semester-container i {
     font-size: large;
+}
+
+.round-black-icon {
+    width: 16px;
+    height: 16px;
+    color: white;
+    background-color: black;
+    text-align: center;
+    font-size: x-small;
+    font-weight: bold;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.round-black-icon.sel {
+    box-shadow: 0 0 0 2px var(--selection-color), 0 0 1px 4px var(--sub-selection-color);
+}
+
+.disabled {
+    pointer-events: none;
+    opacity: 0.4;
 }
 
 /* .tab-container */
@@ -224,6 +257,10 @@ main {
     background-color: rgb(255, 0, 0, 0.4) !important;
 }
 
+.passed-ripple {
+    background-color: var(--sub-selection-color) !important;
+}
+
 @keyframes ripple {
     to {
       transform: scale(200);
@@ -289,4 +326,9 @@ main {
     padding: 0 8px;
     border: 0;
     width: 100%;
+}
+
+#minor-summary-bar {
+    margin-top: 16px;
+    font-size: small;
 }

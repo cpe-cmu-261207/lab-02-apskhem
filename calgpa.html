@@ -28,10 +28,12 @@
                 <aside>
                     <div id="new-semester-container">
                         <aside>
-                            <input id="new-semester-input" type="text" placeholder="new semester" maxlength="6">
+                            <div class="create-semester-icon round-black-icon disabled">1</div>
+                            <div class="create-semester-icon round-black-icon">2</div>
+                            <div class="create-semester-icon round-black-icon disabled">S</div>
                         </aside>
                         <aside class="flex-center">
-                            <i id="new-semester-btn" class="fas fa-calendar-plus"></i>
+                            <i id="new-semester-btn" class="fas fa-calendar-plus disabled"></i>
                         </aside>
                         <aside>
                             <i class="fas fa-download"></i>
@@ -125,20 +127,21 @@
                     </aside>
                     <aside class="custom-grade-table">
                         <div>
-                            <aside>
-                                <input type="text" placeholder="261---" maxlength="6">
+                            <aside class="relative-container">
+                                <input id="subject-query-input" type="text" placeholder="3-digit" maxlength="3">
                             </aside>
-                            <aside>
-                                <input type="text" placeholder="*/sem." maxlength="6">
+                            <aside class="flex-align-center">
+                                <div class="subject-query-icon round-black-icon">*</div>
+                                <div class="subject-query-icon round-black-icon">C</div>
                             </aside>
                         </div>
                         <div>
                             <aside class="bold">Credit</aside>
-                            <aside class="center t-c">0</aside>
+                            <aside class="center t-c">N/A</aside>
                         </div>
                         <div>
                             <aside class="bold">GPA</aside>
-                            <aside class="center t-c">0</aside>
+                            <aside class="center t-c">N/A</aside>
                         </div>
                     </aside>
                 </div>
