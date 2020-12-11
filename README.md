@@ -13,6 +13,8 @@
 
 เมื่อทำเสร็จ ให้นศ.ส่งโค้ดผ่าน GitHub classroom จากนั้น deploy ตัวเว็บไซต์ด้วยบริการ GitHub Pages แล้วคัดลอก URL ของเว็บไซต์ที่ deploy แล้วมาส่งอีกครั้งหนึ่ง
 
+> https://cpe-cmu-261207.github.io/lab-02-apskhem/
+
 Reference:
 
 - [JavaScript @w3schools](https://www.w3schools.com/js/DEFAULT.asp)
