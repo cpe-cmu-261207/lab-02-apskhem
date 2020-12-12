@@ -6,3 +6,7 @@ export class VirtualDOM {
         parent.append(this.el);
     }
 }
+export class AppInitializer {
+    static start(...args) { }
+    static onkeydown(e) { }
+}

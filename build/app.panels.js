@@ -43,6 +43,11 @@ export class CreatePane {
                 this.createListFormat();
             }
         });
+        this.creditInput.addEventListener("input", () => {
+            if (this.creditInput.value) {
+                this.creditInput.value = this.creditInput.value[0];
+            }
+        });
         this.createIcon.addEventListener("click", (e) => {
             e.stopPropagation();
             this.createListFormat();
@@ -64,7 +69,7 @@ export class CreatePane {
         return form;
     }
     validate() {
-        if (!this.idInput.value) {
+        if (!this.idInput.value || this.idInput.value.length !== 6) {
             this.idInput.focus();
             new RippleEffect(0, 0, this.idInput.parentElement, "error-ripple");
             return false;

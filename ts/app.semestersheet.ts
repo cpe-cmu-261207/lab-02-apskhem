@@ -92,8 +92,7 @@ export class SemesterSheet extends VirtualDOM implements Iterable<SubjectList> {
 
             s.el.remove();
 
-            // ressign number
-            this.forEach((list, i) => list.order = i + 1);
+            this.reorder();
 
             this.onlistdelete?.(s);
         }
@@ -104,7 +103,42 @@ export class SemesterSheet extends VirtualDOM implements Iterable<SubjectList> {
         return s;
     }
 
+    public deselect(): void {
+        this.selList?.el.classList.remove("sel");
+        this.selList = null;
+    }
+
     public forEach(callbackFn: (value: SubjectList, index: number, array: SubjectList[]) => void): void {
         this.subjectList.forEach(callbackFn);
+    }
+
+    public moveSelectionUp(): void {
+        if (!this.selList) return;
+
+        const index = this.subjectList.indexOf(this.selList);
+
+        if (index > 0) {
+            const temp = this.subjectList.splice(index, 1)[0];
+            this.subjectList.splice(index - 1, 0, temp);
+
+            this.reorder();
+        }
+    }
+
+    public moveSelectionDown(): void {
+        if (!this.selList) return;
+
+        const index = this.subjectList.indexOf(this.selList);
+
+        if (index <= this.subjectList.length) {
+            const temp = this.subjectList.splice(index, 1)[0];
+            this.subjectList.splice(index + 1, 0, temp);
+
+            this.reorder();
+        }
+    }
+
+    private reorder(): void {
+        this.forEach((list, i) => list.order = i + 1);
     }
 }

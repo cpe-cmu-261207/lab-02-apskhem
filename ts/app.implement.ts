@@ -8,3 +8,10 @@ export abstract class VirtualDOM {
         parent.append(this.el);
     }
 }
+
+export abstract class AppInitializer {
+
+    public static start(...args: Object[]): void { }
+    public static onkeydown(e: KeyboardEvent): void { }
+
+}

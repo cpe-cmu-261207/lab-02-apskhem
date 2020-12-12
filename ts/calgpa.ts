@@ -1,7 +1,8 @@
+import { AppInitializer } from "./app.implement.js";
 import { CreatePane, SummaryPane, UpperControllerPane } from "./app.panels.js";
 import { SemesterSheet } from "./app.semestersheet.js";
 
-class CalGpaApp {
+class CalGpaApp extends AppInitializer {
 
     public static readonly listContainer = document.getElementById("subject-list-container") as HTMLElement;
     public static readonly emptyText = document.getElementById("empty-list") as HTMLElement;
@@ -13,7 +14,8 @@ class CalGpaApp {
     public static sheets: SemesterSheet[] = [];
     public static selSheet: SemesterSheet | null = null;
 
-    public static main(...args: Object[]): void {
+    /** @override */
+    public static start(): void {
 
         // dummy initialization
         const dummySheet = this.upperPane.createSheet("1/2562");
@@ -29,9 +31,7 @@ class CalGpaApp {
 
         this.setCurrentSheet(dummySheet);
 
-        for (const list of this.selSheet ?? []) {
-            list.appendTo(this.listContainer);
-        }
+        this.selSheet?.forEach(list => list.appendTo(this.listContainer));
 
         this.updateSummary();
 
@@ -48,11 +48,13 @@ class CalGpaApp {
 
         // sheet tab change event handler
         this.upperPane.onsheetchange = (sheet) => {
+            // old sheet manipulation
             this.clearListContainer();
 
-            for (const list of sheet) {
-                list.appendTo(this.listContainer);
-            }
+            this.selSheet?.deselect();
+
+            // current sheet manipulation
+            sheet.forEach(list => list.appendTo(this.listContainer));
 
             this.setCurrentSheet(sheet);
 
@@ -105,6 +107,26 @@ class CalGpaApp {
 
                 this.summaryPane.popErrorRippleEffect();
             }
+        }
+    }
+
+    /** @override */
+    public static onkeydown(e: KeyboardEvent): void {
+        switch (e.code) {
+            case "ArrowUp": {
+                if (!this.selSheet) return;
+
+                this.selSheet.moveSelectionUp();
+
+                this.rerender();
+            } break;
+            case "ArrowDown": {
+                if (!this.selSheet) return;
+
+                this.selSheet.moveSelectionDown();
+
+                this.rerender();
+            } break;
         }
     }
 
@@ -181,10 +203,17 @@ class CalGpaApp {
             list.el.remove();
         }
     }
+
+    public static rerender(): void {
+        if (!this.selSheet) return;
+        
+        this.clearListContainer();
+
+        for (const list of this.selSheet) {
+            list.appendTo(this.listContainer);
+        }
+    }
 }
 
-window.onload = () => {
-    CalGpaApp.main();
-
-    window.onload = null;
-};
+window.onload = () => CalGpaApp.start();
+window.onkeydown = (e: KeyboardEvent) => CalGpaApp.onkeydown(e);

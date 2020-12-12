@@ -66,13 +66,41 @@ export class SemesterSheet extends VirtualDOM {
             const i = this.subjectList.indexOf(s);
             this.subjectList.splice(i, 1);
             s.el.remove();
-            this.forEach((list, i) => list.order = i + 1);
+            this.reorder();
             (_a = this.onlistdelete) === null || _a === void 0 ? void 0 : _a.call(this, s);
         };
         s.order = this.subjectList.length;
         return s;
     }
+    deselect() {
+        var _a;
+        (_a = this.selList) === null || _a === void 0 ? void 0 : _a.el.classList.remove("sel");
+        this.selList = null;
+    }
     forEach(callbackFn) {
         this.subjectList.forEach(callbackFn);
+    }
+    moveSelectionUp() {
+        if (!this.selList)
+            return;
+        const index = this.subjectList.indexOf(this.selList);
+        if (index > 0) {
+            const temp = this.subjectList.splice(index, 1)[0];
+            this.subjectList.splice(index - 1, 0, temp);
+            this.reorder();
+        }
+    }
+    moveSelectionDown() {
+        if (!this.selList)
+            return;
+        const index = this.subjectList.indexOf(this.selList);
+        if (index <= this.subjectList.length) {
+            const temp = this.subjectList.splice(index, 1)[0];
+            this.subjectList.splice(index + 1, 0, temp);
+            this.reorder();
+        }
+    }
+    reorder() {
+        this.forEach((list, i) => list.order = i + 1);
     }
 }
