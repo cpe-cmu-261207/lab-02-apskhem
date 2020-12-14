@@ -143,6 +143,8 @@ h3 i {
     pointer-events: none;
 }
 
+/* gallery */
+
 .gallery-img-container {
     display: flex;
     align-items: center;
