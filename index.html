@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.13.0/css/all.css" crossorigin="anonymous">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Cabin&display=swap">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Sarabun&display=swap">
     <link rel="stylesheet" type="text/css" href="./css/main.css">
@@ -11,26 +12,32 @@
     <title>My Profile</title>
 </head>
 <body>
+    <div id="sidenav">
+        <div class="sel">P</div>
+        <a href="./gallery.html">G</a>
+        <a href="./contact.html">C</a>
+        <a href="./calgpa.html"><i class="fas fa-calculator"></i></a>
+    </div>
     <header>
-        <h1>Apisit Ritreungroj</h1>
-        <div>Maybe a (4-year) CPE Student at Chiang Mai Univerity</div>
-        <div class="img-center-container">
-            <img class="img-center" src="assets/images/get_image_hi.jpeg" width="12%" alt="My Pic">
-        </div>
+        <h1>Hello, I'm Apisit Ritreungroj</h1>
+        <div>Welcome to my personal website.</div>
     </header>
     <main>
         <!-- flex container -->
-        <div class="main-content">
-            <div class="sidenav">
-                <div>
-                    <h3>My Profile</h3>
+        <div class="main-content fansy-drop-shadow">
+            <div id="profile-block" class="content-block">
+                <aside class="img-container">
+                    <img class="profile-img" src="./assets/images/get_image_hi.jpeg" alt="">
+                </aside>
+                <aside>
+                    <h3><i class="fas fa-address-book"></i>Contact</h3>
                     <div class="f-list">
                         <aside>
-                            <li>Email</li>
-                            <li>Tel</li>
-                            <li>FB</li>
-                            <li>IG</li>
-                            <li>Github</li>
+                            <i class="fas fa-envelope"></i>
+                            <i class="fas fa-phone-alt"></i>
+                            <i class="fab fa-facebook-square"></i>
+                            <i class="fab fa-instagram"></i>
+                            <i class="fab fa-github"></i>
                         </aside>
                         <aside>
                             <li>apisit_rit@cmu.ac.th</li>
@@ -40,50 +47,130 @@
                             <li><a href="https://github.com/apskhem" target="_blank">apskhem</a></li>
                         </aside>
                     </div>
-                </div>
-                <div>
-                    <h3>View Pages</h3>
-                    <div class="sidenav-list">
-                        <li>Home (Current)</li>
-                        <li><a href="./gallery.html">Gallery</a></li>
-                        <li><a href="./contact.html">Contact</a></li>
-                    </div>
-                </div>
-                <div>
-                    <h3>Services</h3>
-                    <div class="sidenav-list">
-                        <li><a href="./calgpa.html">GPA Calculator</a></li>
-                    </div>
-                </div>
-            </div>
-            <div class="page-view">
-                <div style="height:60px;"></div>
-                <div>
-                    <h3>Profile</h3>
+                </aside>
+                <aside>
+                    <h3><i class="fas fa-user-circle"></i>Profile</h3>
                     <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua</li>
                     <li>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat</li>
                     <li>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur</li>
                     <li>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</li>
+                </aside>
+            </div>
+            <hr>
+            <div class="content-block">
+                <h3><i class="fas fa-graduation-cap"></i>Education</h3>
+                <div id="education-block">
+                    <aside class="edu-content">
+                        <h3>Nursery</h3>
+                        <small>May. 2004 - Mar. 2007</small>
+                        <div>
+                            <li>อนุบาลขวัญดรุณ</li>
+                        </div>
+                    </aside>
+                    <aside class="edu-content">
+                        <h3>Elementary</h3>
+                        <small>May. 2007 - Mar. 2013</small>
+                        <div>
+                            <li>พงษ์พิกุล เชียงใหม่</li>
+                        </div>
+                    </aside>
+                    <aside class="edu-content">
+                        <h3>Middle School</h3>
+                        <small>20, May. 2013 - 25, Mar. 2016</small>
+                        <div>
+                            <li>เทพบดินทร์วิทยา</li>
+                        </div>
+                    </aside>
+                    <aside class="edu-content">
+                        <h3>High School</h3>
+                        <small>10, May. 2016 - 29, Mar. 2019</small>
+                        <div>
+                            <li>ยุพราชวิทยาลัย</li>
+                            <li>สายวิทย์-คณิต</li>
+                            <li>โครงการพัฒนาและส่งเสริมผู้มีความสามารถพิเศษทางวิทยาศาสตร์และเทคโนโลยีภาคสมทบ (พสวท.สมทบ)</li>
+                        </div>
+                    </aside>
+                    <aside class="edu-content">
+                        <h3>Bachelor Degree</h3>
+                        <small>5, Aug. 2019 - Present</small>
+                        <div>
+                            <li>คณะวิศวกรรมศาสตร์</li>
+                            <li>สาขาวิชาวิศวกรรมคอมพิวเตอร์</li>
+                            <li>มหาวิทยาลัยเชียงใหม่</li>
+                        </div>
+                    </aside>
                 </div>
-                <div>
-                    <h3>Education</h3>
-                    <li>อนุบาลขวัญดรุณ</li>
-                    <li>พงษ์พิกุล เชียงใหม่</li>
-                    <li>เทพบดินทร์ เชียงใหม่</li>
-                    <li>ยุพราชวิทยาลัย เชียงใหม่</li>
-                    <li>คณะวิศวกรรมศาสตร์ มหาวิทยาลัยเชียงใหม่</li>
-                </div>
-                <div>
-                    <h3>Skills</h3>
-                    <li>Math ประถม: C</li>
-                    <li>English ประถม: A++</li>
-                    <li>HTML: A++</li>
+            </div>
+            <hr>
+            <div class="content-block">
+                <h3><i class="fas fa-tools"></i>Skills</h3>
+                <div id="skills-block">
+                    <aside class="skills-content">
+                        <h3>Languages</h3>
+                        <div>
+                            <li>Thai (native)</li>
+                            <div class="language-bar-container">
+                                <aside>
+                                    <div style="width:100%;">&nbsp;&nbsp;L</div>
+                                </aside>
+                                <aside>
+                                    <div style="width:100%;">&nbsp;&nbsp;R</div>
+                                </aside>
+                                <aside>
+                                    <div style="width:100%;">&nbsp;&nbsp;S</div>
+                                </aside>
+                                <aside>
+                                    <div style="width:100%;">&nbsp;&nbsp;W</div>
+                                </aside>
+                            </div>
+                        </div>
+                        <div>
+                            <li>English</li>
+                            <div class="language-bar-container">
+                                <aside>
+                                    <div style="width:89%;">&nbsp;&nbsp;L</div>
+                                </aside>
+                                <aside>
+                                    <div style="width:72%;">&nbsp;&nbsp;R</div>
+                                </aside>
+                                <aside>
+                                    <div style="width:68%;">&nbsp;&nbsp;S</div>
+                                </aside>
+                                <aside>
+                                    <div style="width:94%;">&nbsp;&nbsp;W</div>
+                                </aside>
+                            </div>
+                        </div>
+                        <div>
+                            <li>French</li>
+                            <div class="language-bar-container">
+                                <aside>
+                                    <div style="width:25%;">&nbsp;&nbsp;L</div>
+                                </aside>
+                                <aside>
+                                    <div style="width:67%;">&nbsp;&nbsp;R</div>
+                                </aside>
+                                <aside>
+                                    <div style="width:40%;">&nbsp;&nbsp;S</div>
+                                </aside>
+                                <aside>
+                                    <div style="width:60%;">&nbsp;&nbsp;W</div>
+                                </aside>
+                            </div>
+                        </div>
+                    </aside>
+                    <aside class="skills-content">
+                        <h3>Sport</h3>
+                    </aside>
+                    <aside class="skills-content">
+                        <h3>Technical</h3>
+                    </aside>
                 </div>
             </div>
         </div>
     </main>
     <footer>
-        <p>Landing Page for CPE207. &copy; 2020 Apisit Ritreungroj</p>
+        <li>Landing Page for CPE207. &copy; 2020 Apisit Ritreungroj</li>
     </footer>
 </body>
 </html>

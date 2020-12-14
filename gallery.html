@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.13.0/css/all.css" crossorigin="anonymous">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Cabin&display=swap">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Sarabun&display=swap">
     <link rel="stylesheet" type="text/css" href="./css/main.css">
@@ -11,86 +12,107 @@
     <title>My Profile</title>
 </head>
 <body>
+    <div id="sidenav">
+        <a href="./index.html">P</a>
+        <div class="sel">G</div>
+        <a href="./contact.html">C</a>
+        <a href="./calgpa.html"><i class="fas fa-calculator"></i></a>
+    </div>
     <header>
-        <h1>Apisit Ritreungroj</h1>
-        <div>Maybe a (4-year) CPE Student at Chiang Mai Univerity</div>
-        <div class="img-center-container">
-            <img class="img-center" src="assets/images/get_image_hi.jpeg" width="12%" alt="My Pic">
-        </div>
+        <h1>Hello, I'm Apisit Ritreungroj</h1>
+        <div>Welcome to my personal website.</div>
     </header>
     <main>
         <!-- flex container -->
-        <div class="main-content">
-            <div class="sidenav">
-                <div>
-                    <h3>My Profile</h3>
-                    <div class="f-list">
-                        <aside>
-                            <li>Email</li>
-                            <li>Tel</li>
-                            <li>FB</li>
-                            <li>IG</li>
-                            <li>Github</li>
-                        </aside>
-                        <aside>
-                            <li>apisit_rit@cmu.ac.th</li>
-                            <li>(+66) 082-1866-840</li>
-                            <li><a href="https://www.facebook.com/aps.khemdev" target="_blank">Apisit Ritreungroj</a></li>
-                            <li><a href="https://www.instagram.com/apskhem" target="_blank">apskhem</a></li>
-                            <li><a href="https://github.com/apskhem" target="_blank">apskhem</a></li>
-                        </aside>
-                    </div>
-                </div>
-                <div>
-                    <h3>View Pages</h3>
-                    <div class="sidenav-list">
-                        <li><a href="./index.html">Home</a></li>
-                        <li>Gallery (Current)</li>
-                        <li><a href="./contact.html">Contact</a></li>
-                    </div>
-                </div>
-                <div>
-                    <h3>Services</h3>
-                    <div class="sidenav-list">
-                        <li><a href="./calgpa.html">GPA Calculator</a></li>
-                    </div>
-                </div>
-            </div>
-            <div class="page-view">
-                <div style="height:60px;"></div>
-                <h3>Favorite Pics!</h3>
+        <div class="main-content fansy-drop-shadow">
+            <div class="content-block">
+                <h3><i class="fas fa-images"></i>Gallery</h3>
                 <table>
                     <tr>
                         <td>
-                            <img src="./assets/images/_MG_6330-Edit.jpg" width="100%" alt="A nice pic">
+                            <div class="gallery-img-container">
+                                <img src="./assets/images/gallery-01.jpg" alt="A nice pic">
+                            </div>
+                            <div>
+                                <h3>Cappuccino</h3>
+                                <li>My favorite caffeine drinking.</li>
+                            </div>
                         </td>
                         <td>
-                            <img src="./assets/images/_MG_6330-Edit.jpg" width="100%" alt="A nice pic">
+                            <div class="gallery-img-container">
+                                <img src="./assets/images/gallary-02.jpg" alt="A nice pic">
+                            </div>
+                            <div>
+                                <h3>Cats</h3>
+                                <li>My favorite animal, because they're cute.</li>
+                            </div>
                         </td>
                         <td>
-                            <img src="./assets/images/_MG_6330-Edit.jpg" width="100%" alt="A nice pic">
+                            <div class="gallery-img-container">
+                                <img src="./assets/images/gallery-03.png" alt="A nice pic">
+                            </div>
+                            <div>
+                                <h3>Coding</h3>
+                                <li>My everyday life.</li>
+                            </div>
                         </td>
                     </tr>
                     <tr>
                         <td>
-                            <img src="./assets/images/_MG_6330-Edit.jpg" width="100%" alt="A nice pic">
+                            <div class="gallery-img-container">
+                                <img src="./assets/images/gallery-04.jpg" alt="A nice pic">
+                            </div>
+                            <div>
+                                <h3>Artificial intelligence</h3>
+                                <li>My field of interesting in programming.</li>
+                            </div>
                         </td>
                         <td>
-                            <img src="./assets/images/_MG_6330-Edit.jpg" width="100%" alt="A nice pic">
+                            <div class="gallery-img-container wide">
+                                <img src="./assets/images/gallery-05.png" alt="A nice pic">
+                            </div>
+                            <div>
+                                <h3>Investment & Finance</h3>
+                                <li>Currently things that I'm interested.</li>
+                            </div>
                         </td>
                         <td>
-                            <img src="./assets/images/_MG_6330-Edit.jpg" width="100%" alt="A nice pic">
+                            <div class="gallery-img-container">
+                                <img src="./assets/images/gallery-03.png" alt="A nice pic">
+                            </div>
+                            <div>
+                                <h3>Null</h3>
+                                <li>Pointer Exception.</li>
+                            </div>
                         </td>
                     </tr>
                     <tr>
                         <td>
-                            <img src="./assets/images/_MG_6330-Edit.jpg" width="100%" alt="A nice pic">
+                            <div class="gallery-img-container">
+                                <img src="./assets/images/gallery-01.jpg" alt="A nice pic">
+                            </div>
+                            <div>
+                                <h3>Null</h3>
+                                <li>Pointer Exception.</li>
+                            </div>
                         </td>
                         <td>
-                            <img src="./assets/images/_MG_6330-Edit.jpg" width="100%" alt="A nice pic">
+                            <div class="gallery-img-container">
+                                <img src="./assets/images/gallery-01.jpg" alt="A nice pic">
+                            </div>
+                            <div>
+                                <h3>Null</h3>
+                                <li>Pointer Exception.</li>
+                            </div>
                         </td>
                         <td>
-                            <img src="./assets/images/_MG_6330-Edit.jpg" width="100%" alt="A nice pic">
+                            <div class="gallery-img-container">
+                                <img src="./assets/images/gallery-01.jpg" alt="A nice pic">
+                            </div>
+                            <div>
+                                <h3>Null</h3>
+                                <li>Pointer Exception.</li>
+                            </div>
                         </td>
                     </tr>
                 </table>
@@ -98,7 +120,7 @@
         </div>
     </main>
     <footer>
-        <p>Landing Page for CPE207. &copy; 2020 Apisit Ritreungroj</p>
+        <li>Landing Page for CPE207. &copy; 2020 Apisit Ritreungroj</li>
     </footer>
 </body>
 </html>

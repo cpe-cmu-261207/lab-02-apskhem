@@ -1,49 +1,170 @@
-.img-center-container {
-    position: absolute;
-    bottom: 0;
-    transform: translate(0, 50%);
+h3 i {
+    margin-right: 12px;
+    pointer-events: none;
 }
 
-.img-center {
+#sidenav {
+    padding: 8px;
+    position: fixed;
+    height: fit-content;
+    width: 32px;
+    top: 50%;
+    transform: translate(0, -50%);
+    z-index: 999;
+}
+
+#sidenav > * {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    margin: 8px 0;
+    background-color: white;
+    font-weight: bold;
     border-radius: 50%;
-    box-shadow: 0 0 0 6px white;
+    box-shadow: 0 0 6px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+}
+
+#sidenav > *.sel {
+    background-color: var(--sub-selection-color);
+    pointer-events: none;
+}
+
+.img-container {
+    position: relative;
+    display: flex;
+    justify-content: center;
+}
+
+.profile-img {
+    max-width: 90%;
+    max-height: 192px;
+    border-radius: 50%;
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.2);
+    border: 6px solid white;
 }
 
 .main-content {
-    display: flex;
+    margin-top: -42px;
+    margin: 0 auto;
+    max-width: 960px;
 }
 
-.sidenav {
-    background-color: aliceblue;
-    min-width: 274px;
-    padding: 16px;
+#profile-block {
+    gap: 32px;
+    display: grid;
+    grid-template-columns: 200px 180px 1fr;
 }
 
-.sidenav-list {
-    background-color: white;
-    border-radius: 8px;
+#education-block {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+}
+
+#education-block > :not(:last-child) {
+    border-right: 1px solid whitesmoke;
+}
+
+.edu-content h3 {
+    text-align: center;
+}
+
+.edu-content small {
+    display: block;
+    text-align: center;
+    font-size: xx-small;
+    margin-top: -16px;
+    opacity: 0.6;
+}
+
+.edu-content div {
+    padding: 8px;
+}
+
+.edu-content li {
+    text-align: center;
+    margin: 6px 0;
+}
+
+#skills-block {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+}
+
+#skills-block > :not(:last-child) {
+    border-right: 1px solid whitesmoke;
+}
+
+.skills-content h3 {
+    text-align: center;
+}
+
+.skills-content > div {
+    padding: 8px;
+}
+
+.language-bar-container {
     overflow: hidden;
+    position: relative;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    height: 18px;
+    border-radius: 9px;
+    background-color: whitesmoke;
 }
 
-.sidenav-list > li {
-    padding: 4px 8px;
+.language-bar-container > aside:not(:last-child) {
+    border-right: 4px solid white;
 }
 
-.sidenav-list > li:hover {
-    background-color: var(--sub-selection-color);
+.language-bar-container > aside > div {
+    display: flex;
+    height: 100%;
+    color: white;
+    font-size: smaller;
 }
 
-.sidenav-list > li:not(:last-child) {
-    border-bottom: 1px solid whitesmoke;
-}
+.language-bar-container > aside:nth-child(1) > div { background-color: tomato; }
+.language-bar-container > aside:nth-child(2) > div { background-color: green; }
+.language-bar-container > aside:nth-child(3) > div { background-color: purple; }
+.language-bar-container > aside:nth-child(4) > div { background-color: lightslategray; }
 
 .f-list {
     display: grid;
-    grid-template-columns: 72px 1fr;
+    grid-template-columns: 32px 1fr;
 }
 
-.f-list > :first-child *::after {
-    content: ":";
+.f-list i {
+    display: flex;
+    align-items: center;
+    height: 24px;
+    pointer-events: none;
+}
+
+.gallery-img-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    max-height: 300px;
+    overflow: hidden;
+}
+
+.gallery-img-container img {
+    width: 100%;
+}
+
+td {
+    padding: 16px;
+}
+
+td h3 {
+    margin: 0;
+}
+
+td div {
+    text-align: center;
 }
 
 .page-view {
@@ -67,7 +188,7 @@
     padding: 0 8px;
     display: block;
     background-color: white !important;
-    border: 0;
+    border: 1px solid whitesmoke !important;
     width: calc(100% - 16px);
     transition: 0.3s;
 }
@@ -82,6 +203,7 @@
     font-size: 16px;
     display: block;
     width: calc(100% - 16px);
+    border: 1px solid whitesmoke !important;
     padding: 8px;
     border: 0;
     resize: none;
