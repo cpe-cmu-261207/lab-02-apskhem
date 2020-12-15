@@ -157,6 +157,11 @@ h3 i {
     width: 100%;
 }
 
+table {
+    table-layout: fixed;
+    width: 100%;
+}
+
 td {
     padding: 16px;
 }
